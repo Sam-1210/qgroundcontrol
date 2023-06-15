@@ -31,7 +31,7 @@ Rectangle {
 
     property var    _activeVehicle:     QGroundControl.multiVehicleManager.activeVehicle
     property bool   _communicationLost: _activeVehicle ? _activeVehicle.vehicleLinkManager.communicationLost : false
-    property color  _mainStatusBGColor: qgcPal.brandingPurple
+    property color  _mainStatusBGColor: qgcPal.brandingOrange
 
     function dropMessageIndicatorTool() {
         if (currentToolbar === flyViewToolbar) {
@@ -57,11 +57,12 @@ Rectangle {
 
         gradient: Gradient {
             orientation: Gradient.Horizontal
-            GradientStop { position: 0;                                     color: _mainStatusBGColor }
-            GradientStop { position: currentButton.x + currentButton.width; color: _mainStatusBGColor }
+            GradientStop { position: 0;                                     color: qgcPal.brandingOrange }
+            GradientStop { position: currentButton.x + currentButton.width; color: qgcPal.brandingOrange }
             GradientStop { position: 1;                                     color: _root.color }
         }
     }
+
 
     RowLayout {
         id:                     viewButtonRow
@@ -221,5 +222,14 @@ Rectangle {
             anchors.fill:   parent
             onClicked:      largeProgressBar._userHide = true
         }
+    }
+
+    QGCButton {
+        id:                 logoutButton
+        text:               qsTr("Logout")
+        visible:            true
+        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.rightMargin: 20
     }
 }
